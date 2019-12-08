@@ -19,6 +19,11 @@ func main(){
   var fname = flag.String("in", "", "file containing raw binary of FAT directory tree")
   flag.Parse()
 
+  if *fname == ""{
+    flag.Usage()
+    os.Exit(1)
+  }
+
   file, err := os.Open(*fname)
   if err != nil{
     panic(err)
